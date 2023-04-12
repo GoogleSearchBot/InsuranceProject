@@ -13,6 +13,11 @@ pipeline {
 		git branch: 'main', url: 'https://github.com/GoogleSearchBot/InsuranceProject.git'
 	    }
         }
+	stage('package the project') {
+	     steps {
+	    	sh 'mvn clean package'
+	     }
+	}
     }
 }
 
