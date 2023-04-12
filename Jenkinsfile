@@ -25,7 +25,7 @@ pipeline {
 	}
 	stage('build docker image') {
 	     steps {
-	    	sh 'docker build -t minimalkushal/insureme:latest'
+	    	sh 'docker build -t minimalkushal/insureme:latest .'
   	     }
 	}
     }
