@@ -30,10 +30,9 @@ pipeline {
 	}
 	stage('push image to docker hub') {
 	     steps { 
-		withCredentials([usernamePassword(credentialsId: 'docker-hub-login', passwordVariable: 'dockerhub-password', usernameVariable: 'dockerhub-username')]) {
-   			sh "docker login -u ${env.dockerhub-username} -p ${env.dockerhub-password}"
+		   withDockerRegistry(credentialsId: 'docker-hub-login', url: 'https://hub.docker.com/') {
 			sh 'docker push minimalkushal/insureme:latest'
-		}
+		   }
 	     }
 	}
     }
