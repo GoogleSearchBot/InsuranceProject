@@ -30,8 +30,10 @@ pipeline {
 	}
 	stage('push image to docker hub') {
 	     steps { 
-    			sh "docker login -u minimalkushal --password-stdin ku$hluvr@m24DH"
-			sh 'docker push minimalkushal/insureme:latest'
+    			sh '''
+			   docker login -u minimalkushal -p kush@lch@uh@n24DH
+			   docker push minimalkushal/insureme:latest
+			'''
 	     }
 	}
     }
