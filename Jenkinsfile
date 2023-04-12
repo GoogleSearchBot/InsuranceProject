@@ -33,6 +33,11 @@ pipeline {
 		ansiblePlaybook become: true, credentialsId: 'execute-ansible', disableHostKeyChecking: true, installation: 'Ansible', inventory: '/etc/ansible/hosts', playbook: 'ansible-deploy.yml'
 		}
 	}
+	stage('run Selenium test case') {
+	     steps {
+		sh 'java -jar Insure-Me-Selenium.jar'
+	     }
+	}
     }
 }
 
