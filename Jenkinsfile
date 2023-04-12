@@ -28,6 +28,15 @@ pipeline {
 	    	sh 'docker build -t minimalkushal/insureme:latest .'
   	     }
 	}
+	stage('push image to docker hub') {
+	     steps { 
+		withCredentials([usernamePassword(credentialsId: 'docker-hub-login', passwordVariable: 'docker-password', usernameVariable
+'docker-username')]) {
+   			sh "docker login -u ${env.docker-username} -p ${env.docker-password}"
+			sh 'docker push minimalkushal/insureme:latest'
+		}
+	     }
+	}
     }
 }
 
