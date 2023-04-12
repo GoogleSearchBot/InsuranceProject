@@ -31,7 +31,7 @@ pipeline {
 	// paste here
 	stage('run Selenium test case') {
 	     steps {
-		sh 'java -jar InsureMeSelenium.jar'
+		sh 'java -jar /home/ubuntu/InsuranceProject/InsureMeSelenium.jar'
 	     }
 	}
     }
