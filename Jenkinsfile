@@ -31,7 +31,7 @@ pipeline {
 	// paste here
 	stage('run Selenium test case') {
 	     steps {
-		sh 'java -jar Insure-Me-Selenium.jar'
+		sh 'java -jar InsureMeSelenium.jar'
 	     }
 	}
     }
