@@ -36,11 +36,11 @@ pipeline {
                 }
 
 	     }
+        }
 	stage('deploy using ansible') {
 	    steps {
 		ansiblePlaybook disableHostKeyChecking: true, installation: 'Ansible', inventory: '/etc/ansible/hosts', playbook: 'ansible-deploy.yml'
 		}
-	}
 	}
     }
 }
