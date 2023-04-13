@@ -29,24 +29,11 @@ pipeline {
   	     }
 	}
 	//delete from here
-	stage('push image to docker hub') {
-             steps {
-                withCredentials([usernamePassword(credentialsId: 'docker-hub-login', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USER')]) {
-                        sh "docker login -u ${env.DOCKERHUB_USER} --password-stdin ${env.DOCKERHUB_PASSWORD}"
-                        sh 'docker push minimalkushal/insureme:latest'
-                }
-
-             }
-        }
-	stage('deploy using ansible') {
-	    steps {
-		ansiblePlaybook become: true, credentialsId: 'execute-ansible', disableHostKeyChecking: true, installation: 'Ansible', inventory: '/etc/ansible/hosts', playbook: 'ansible-deploy.yml'
-		}
-	}
+	//paste here
 	// upto here delete for test
 	stage('run Selenium test case') {
 	     steps {
-		sh 'java -jar InsureMeSelenium.jar'
+		sh 'java -jar /home/ubuntu/InsureMeSelenium/InsureMeSelenium.jar'
 	     }
 	}
     }
