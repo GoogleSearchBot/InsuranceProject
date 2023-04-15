@@ -34,13 +34,12 @@ pipeline {
                         sh "docker login -u ${env.DOCKERHUB_USER} --password-stdin ${env.DOCKERHUB_PASSWORD}"
                         sh 'docker push minimalkushal/insureme:latest'
                 }
-
              }
         }
 	stage('deploy using ansible') {
 	    steps {
 		ansiblePlaybook become: true, credentialsId: 'execute-ansible', disableHostKeyChecking: true, installation: 'Ansible', inventory: '/etc/ansible/hosts', playbook: 'ansible-deploy.yml'
-		}
+	    }
 	}
 	stage('run Selenium test case') {
 	     steps {
